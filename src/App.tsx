@@ -45,23 +45,23 @@ const SCENARIOS: Scenario[] = [
     level: 1,
     title: 'Level 1: 3대 상염색체 열성 (미맹)',
     description: '친가 가계도입니다. 조부모님은 정상이시지만 고모가 미맹(aa)입니다. 가족들의 유전자형을 추론해 보세요.',
-    hint: '미맹(aa)인 자녀가 있다면 부모는 반드시 a를 가져야 합니다. (답이 여러 개면 "AA, Aa"처럼 모두 적으세요)',
+    hint: '미맹(aa)인 자녀가 있다면 부모는 반드시 a를 가져야 합니다. (답이 여러 개면 "AA, Aa"처럼 모두 적으세여)',
     nodes: [
-      { id: '1', label: '할아버지', sex: 'M', affected: false, x: 35, y: 10, requiredAnswers: [['Aa', 'aA']] },
-      { id: '2', label: '할머니', sex: 'F', affected: false, x: 45, y: 10, requiredAnswers: [['Aa', 'aA']] },
-      { id: '3', label: '고모', sex: 'F', affected: true, x: 25, y: 40, requiredAnswers: [['aa']] },
-      { id: '4', label: '아버지', sex: 'M', affected: false, x: 40, y: 40, requiredAnswers: [['Aa', 'aA']] },
-      { id: '5', label: '어머니', sex: 'F', affected: false, x: 55, y: 40, requiredAnswers: [['AA'], ['Aa', 'aA']] },
-      { id: '6', label: '나', sex: 'M', affected: true, x: 47.5, y: 70, requiredAnswers: [['aa']] },
+      { id: '1', label: '할아버지', sex: 'M', affected: false, x: 40, y: 15, requiredAnswers: [['Aa', 'aA']] },
+      { id: '2', label: '할머니', sex: 'F', affected: false, x: 55, y: 15, requiredAnswers: [['Aa', 'aA']] },
+      { id: '3', label: '고모', sex: 'F', affected: true, x: 30, y: 45, requiredAnswers: [['aa']] },
+      { id: '4', label: '아버지', sex: 'M', affected: false, x: 47.5, y: 45, requiredAnswers: [['Aa', 'aA']] },
+      { id: '5', label: '어머니', sex: 'F', affected: false, x: 62.5, y: 45, requiredAnswers: [['AA'], ['Aa', 'aA']] },
+      { id: '6', label: '나', sex: 'M', affected: true, x: 55, y: 75, requiredAnswers: [['aa']] },
     ],
     lines: [
-      { x1: 35, y1: 10, x2: 45, y2: 10 },
-      { x1: 40, y1: 10, x2: 40, y2: 25 },
-      { x1: 25, y1: 25, x2: 40, y2: 25 },
-      { x1: 25, y1: 25, x2: 25, y2: 40 },
-      { x1: 40, y1: 25, x2: 40, y2: 40 },
-      { x1: 40, y1: 40, x2: 55, y2: 40 },
-      { x1: 47.5, y1: 40, x2: 47.5, y2: 70 },
+      { x1: 40, y1: 15, x2: 55, y2: 15 },
+      { x1: 47.5, y1: 15, x2: 47.5, y2: 30 },
+      { x1: 30, y1: 30, x2: 47.5, y2: 30 },
+      { x1: 30, y1: 30, x2: 30, y2: 45 },
+      { x1: 47.5, y1: 30, x2: 47.5, y2: 45 },
+      { x1: 47.5, y1: 45, x2: 62.5, y2: 45 },
+      { x1: 55, y1: 45, x2: 55, y2: 75 },
     ]
   },
   {
@@ -71,21 +71,21 @@ const SCENARIOS: Scenario[] = [
     description: '외가 가계도입니다. 외할머니와 이모는 보조개가 없지만(aa), 엄마와 외할아버지는 보조개가 있습니다.',
     hint: '보조개가 있는 경우 A, 없는 경우 a입니다. 보조개가 없는(aa) 가족부터 분석해 보세요.',
     nodes: [
-      { id: '1', label: '외할아버지', sex: 'M', affected: true, x: 55, y: 10, requiredAnswers: [['Aa', 'aA']] },
-      { id: '2', label: '외할머니', sex: 'F', affected: false, x: 65, y: 10, requiredAnswers: [['aa']] },
-      { id: '3', label: '이모', sex: 'F', affected: false, x: 50, y: 40, requiredAnswers: [['aa']] },
-      { id: '4', label: '어머니', sex: 'F', affected: true, x: 65, y: 40, requiredAnswers: [['Aa', 'aA']] },
-      { id: '5', label: '아버지', sex: 'M', affected: false, x: 35, y: 40, requiredAnswers: [['aa']] },
-      { id: '6', label: '나', sex: 'F', affected: true, x: 50, y: 70, requiredAnswers: [['Aa', 'aA']] },
+      { id: '1', label: '외할아버지', sex: 'M', affected: true, x: 50, y: 15, requiredAnswers: [['Aa', 'aA']] },
+      { id: '2', label: '외할머니', sex: 'F', affected: false, x: 65, y: 15, requiredAnswers: [['aa']] },
+      { id: '3', label: '이모', sex: 'F', affected: false, x: 45, y: 45, requiredAnswers: [['aa']] },
+      { id: '4', label: '어머니', sex: 'F', affected: true, x: 60, y: 45, requiredAnswers: [['Aa', 'aA']] },
+      { id: '5', label: '아버지', sex: 'M', affected: false, x: 30, y: 45, requiredAnswers: [['aa']] },
+      { id: '6', label: '나', sex: 'F', affected: true, x: 45, y: 75, requiredAnswers: [['Aa', 'aA']] },
     ],
     lines: [
-      { x1: 55, y1: 10, x2: 65, y2: 10 },
-      { x1: 60, y1: 10, x2: 60, y2: 25 },
-      { x1: 50, y1: 25, x2: 65, y2: 25 },
-      { x1: 50, y1: 25, x2: 50, y2: 40 },
-      { x1: 65, y1: 25, x2: 65, y2: 40 },
-      { x1: 35, y1: 40, x2: 65, y2: 40 },
-      { x1: 50, y1: 40, x2: 50, y2: 70 },
+      { x1: 50, y1: 15, x2: 65, y2: 15 },
+      { x1: 57.5, y1: 15, x2: 57.5, y2: 30 },
+      { x1: 45, y1: 30, x2: 60, y2: 30 },
+      { x1: 45, y1: 30, x2: 45, y2: 45 },
+      { x1: 60, y1: 30, x2: 60, y2: 45 },
+      { x1: 30, y1: 45, x2: 60, y2: 45 },
+      { x1: 45, y1: 45, x2: 45, y2: 75 },
     ]
   },
   {
@@ -95,21 +95,21 @@ const SCENARIOS: Scenario[] = [
     description: '외할아버지는 색맹이시고 외할머니는 정상이십니다. 엄마는 정상인데 남동생이 색맹입니다.',
     hint: "남자는 XY, 여자는 XX입니다. 색맹 유전자는 X'로 표시해 보세요.",
     nodes: [
-      { id: '1', label: '외할아버지', sex: 'M', affected: true, x: 55, y: 10, requiredAnswers: [["X'Y"]] },
-      { id: '2', label: '외할머니', sex: 'F', affected: false, x: 65, y: 10, requiredAnswers: [['XX'], ["XX'", "X'X"]] },
-      { id: '3', label: '어머니', sex: 'F', affected: false, x: 60, y: 40, requiredAnswers: [["XX'", "X'X"]] },
-      { id: '4', label: '아버지', sex: 'M', affected: false, x: 45, y: 40, requiredAnswers: [['XY']] },
-      { id: '5', label: '나(여)', sex: 'F', affected: false, x: 40, y: 70, requiredAnswers: [['XX'], ["XX'", "X'X"]] },
-      { id: '6', label: '동생(남)', sex: 'M', affected: true, x: 55, y: 70, requiredAnswers: [["X'Y"]] },
+      { id: '1', label: '외할아버지', sex: 'M', affected: true, x: 55, y: 15, requiredAnswers: [["X'Y"]] },
+      { id: '2', label: '외할머니', sex: 'F', affected: false, x: 70, y: 15, requiredAnswers: [['XX'], ["XX'", "X'X"]] },
+      { id: '3', label: '어머니', sex: 'F', affected: false, x: 62.5, y: 45, requiredAnswers: [["XX'", "X'X"]] },
+      { id: '4', label: '아버지', sex: 'M', affected: false, x: 45, y: 45, requiredAnswers: [['XY']] },
+      { id: '5', label: '나(여)', sex: 'F', affected: false, x: 45, y: 75, requiredAnswers: [['XX'], ["XX'", "X'X"]] },
+      { id: '6', label: '동생(남)', sex: 'M', affected: true, x: 60, y: 75, requiredAnswers: [["X'Y"]] },
     ],
     lines: [
-      { x1: 55, y1: 10, x2: 65, y2: 10 },
-      { x1: 60, y1: 10, x2: 60, y2: 40 },
-      { x1: 45, y1: 40, x2: 60, y2: 40 },
-      { x1: 52.5, y1: 40, x2: 52.5, y2: 55 },
-      { x1: 40, y1: 55, x2: 55, y2: 55 },
-      { x1: 40, y1: 55, x2: 40, y2: 70 },
-      { x1: 55, y1: 55, x2: 55, y2: 70 },
+      { x1: 55, y1: 15, x2: 70, y2: 15 },
+      { x1: 62.5, y1: 15, x2: 62.5, y2: 45 },
+      { x1: 45, y1: 45, x2: 62.5, y2: 45 },
+      { x1: 53.75, y1: 45, x2: 53.75, y2: 60 },
+      { x1: 45, y1: 60, x2: 60, y2: 60 },
+      { x1: 45, y1: 60, x2: 45, y2: 75 },
+      { x1: 60, y1: 60, x2: 60, y2: 75 },
     ]
   },
   {
@@ -119,21 +119,21 @@ const SCENARIOS: Scenario[] = [
     description: '친할아버지(A)와 친할머니(B) 사이에서 O형인 아버지가 태어났습니다. 가족의 유전자형을 완성하세요.',
     hint: 'O형 자녀(OO)가 태어난 것을 통해 조부모님의 유전자형을 알 수 있습니다.',
     nodes: [
-      { id: '1', label: '할아버지', sex: 'M', affected: false, phenotypeLabel: 'A', x: 30, y: 10, requiredAnswers: [['AO', 'OA']] },
-      { id: '2', label: '할머니', sex: 'F', affected: false, phenotypeLabel: 'B', x: 40, y: 10, requiredAnswers: [['BO', 'OB']] },
-      { id: '3', label: '큰아버지', sex: 'M', affected: false, phenotypeLabel: 'AB', x: 20, y: 40, requiredAnswers: [['AB', 'BA']] },
-      { id: '4', label: '아버지', sex: 'M', affected: false, phenotypeLabel: 'O', x: 35, y: 40, requiredAnswers: [['OO']] },
-      { id: '5', label: '어머니', sex: 'F', affected: false, phenotypeLabel: 'A', x: 50, y: 40, requiredAnswers: [['AO', 'OA']] },
-      { id: '6', label: '나', sex: 'F', affected: false, phenotypeLabel: 'O', x: 42.5, y: 70, requiredAnswers: [['OO']] },
+      { id: '1', label: '할아버지', sex: 'M', affected: false, phenotypeLabel: 'A', x: 35, y: 15, requiredAnswers: [['AO', 'OA']] },
+      { id: '2', label: '할머니', sex: 'F', affected: false, phenotypeLabel: 'B', x: 50, y: 15, requiredAnswers: [['BO', 'OB']] },
+      { id: '3', label: '큰아버지', sex: 'M', affected: false, phenotypeLabel: 'AB', x: 25, y: 45, requiredAnswers: [['AB', 'BA']] },
+      { id: '4', label: '아버지', sex: 'M', affected: false, phenotypeLabel: 'O', x: 42.5, y: 45, requiredAnswers: [['OO']] },
+      { id: '5', label: '어머니', sex: 'F', affected: false, phenotypeLabel: 'A', x: 57.5, y: 45, requiredAnswers: [['AO', 'OA']] },
+      { id: '6', label: '나', sex: 'F', affected: false, phenotypeLabel: 'O', x: 50, y: 75, requiredAnswers: [['OO']] },
     ],
     lines: [
-      { x1: 30, y1: 10, x2: 40, y2: 10 },
-      { x1: 35, y1: 10, x2: 35, y2: 25 },
-      { x1: 20, y1: 25, x2: 35, y2: 25 },
-      { x1: 20, y1: 25, x2: 20, y2: 40 },
-      { x1: 35, y1: 25, x2: 35, y2: 40 },
-      { x1: 35, y1: 40, x2: 50, y2: 40 },
-      { x1: 42.5, y1: 40, x2: 42.5, y2: 70 },
+      { x1: 35, y1: 15, x2: 50, y2: 15 },
+      { x1: 42.5, y1: 15, x2: 42.5, y2: 30 },
+      { x1: 25, y1: 30, x2: 42.5, y2: 30 },
+      { x1: 25, y1: 30, x2: 25, y2: 45 },
+      { x1: 42.5, y1: 30, x2: 42.5, y2: 45 },
+      { x1: 42.5, y1: 45, x2: 57.5, y2: 45 },
+      { x1: 50, y1: 45, x2: 50, y2: 75 },
     ]
   }
 ];
@@ -215,7 +215,7 @@ export default function App() {
   };
 
   const getNodeStyle = (node: PedigreeNode) => {
-    const base = `relative flex flex-col items-center justify-center border-[3px] transition-all duration-300 shadow-sm`;
+    const base = `relative flex flex-col items-center justify-center border-[3px] transition-all duration-300 shadow-sm z-10`;
     const shape = node.sex === 'M' ? 'w-14 h-14 rounded-md' : 'w-14 h-14 rounded-full';
     const bg = node.affected ? 'bg-slate-700 text-white border-slate-800' : 'bg-white text-slate-800 border-slate-800';
     let borderStatus = '';
@@ -248,7 +248,7 @@ export default function App() {
           </div>
         </header>
 
-        <main className="glass flex-1 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden flex flex-col min-h-[750px]">
+        <main className="glass flex-1 rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden flex flex-col min-h-[800px]">
           <motion.div key={scenario.id} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.4 }} className="flex-1 flex flex-col">
             <div className="mb-8 text-center">
               <h2 className="text-3xl font-black text-blue-900 mb-2">{scenario.title}</h2>
@@ -268,17 +268,30 @@ export default function App() {
 
               <div className="relative z-10 w-full h-full">
                 {scenario.nodes.map(node => (
-                  <div key={node.id} className="absolute flex flex-col items-center gap-2 transform -translate-x-1/2 -translate-y-1/2" style={{ left: `${node.x}%`, top: `${node.y}%` }}>
-                    <span className="text-xs font-bold text-slate-500 bg-white/80 px-2 py-0.5 rounded-full border border-slate-100 mb-1">{node.label}</span>
+                  <div 
+                    key={node.id} 
+                    className="absolute flex flex-col items-center transform -translate-x-1/2 -translate-y-1/2" 
+                    style={{ left: `${node.x}%`, top: `${node.y}%` }}
+                  >
+                    {/* Label Area Container - positioned above symbol center */}
+                    <div className="absolute bottom-full mb-3 whitespace-nowrap">
+                      <span className="text-xs font-bold text-slate-500 bg-white/80 px-2.5 py-1 rounded-full border border-slate-100 shadow-sm">
+                        {node.label}
+                      </span>
+                    </div>
+
+                    {/* Symbol (Squared Circle/Square) - centered on X,Y */}
                     <div className={getNodeStyle(node)}>
                       {node.phenotypeLabel && <span className="text-xl font-black">{node.phenotypeLabel}</span>}
                       {isGraded && (
-                        <div className={`absolute -top-3 -right-3 p-1 rounded-full bg-white shadow-xl border-2 ${results[node.id] ? 'border-emerald-500 text-emerald-500' : 'border-rose-500 text-rose-500'}`}>
+                        <div className={`absolute -top-3 -right-3 p-1.5 rounded-full bg-white shadow-xl border-2 ${results[node.id] ? 'border-emerald-500 text-emerald-500' : 'border-rose-500 text-rose-500'}`}>
                           {results[node.id] ? <CheckCircle2 className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
                         </div>
                       )}
                     </div>
-                    <div className="w-24 mt-1">
+
+                    {/* Input Area - positioned below symbol center */}
+                    <div className="absolute top-full mt-3 w-24">
                       <input
                         type="text"
                         value={inputs[node.id] || ''}
