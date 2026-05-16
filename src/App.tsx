@@ -19,7 +19,7 @@ interface PedigreeNode {
   parents?: [string, string];
   generation: number;
   position: number; // 0, 1, 2... in that generation row
-  correctAnswers: string[];
+  requiredAnswers: string[][]; // Array of groups, where each group is a set of equivalent strings (e.g. [['AA'], ['Aa', 'aA']])
 }
 
 interface Scenario {
@@ -37,12 +37,12 @@ const SCENARIOS: Scenario[] = [
     level: 1,
     title: 'Level 1: 상염색체 열성 유전 (미맹)',
     description: '부모는 모두 정상인데, 자녀 중 미맹(aa)인 아들이 태어났습니다. 가족 구성원의 유전자형을 찾아보세요.',
-    hint: '정상은 A, 미맹은 a로 표시합니다. 자녀가 aa라면 부모는 반드시 a를 하나씩 가지고 있어야 합니다.',
+    hint: '정상은 A, 미맹은 a로 표시합니다. 자녀가 aa라면 부모는 반드시 a를 하나씩 가지고 있어야 합니다. (여러 개가 답인 경우 "AA, Aa" 처럼 모두 쓰세요)',
     nodes: [
-      { id: '1', sex: 'M', affected: false, generation: 0, position: 0, correctAnswers: ['Aa', 'aA'] },
-      { id: '2', sex: 'F', affected: false, generation: 0, position: 1, correctAnswers: ['Aa', 'aA'] },
-      { id: '3', sex: 'M', affected: true, generation: 1, position: 0, correctAnswers: ['aa'], parents: ['1', '2'] },
-      { id: '4', sex: 'F', affected: false, generation: 1, position: 1, correctAnswers: ['AA', 'Aa', 'aA'], parents: ['1', '2'] },
+      { id: '1', sex: 'M', affected: false, generation: 0, position: 0, requiredAnswers: [['Aa', 'aA']] },
+      { id: '2', sex: 'F', affected: false, generation: 0, position: 1, requiredAnswers: [['Aa', 'aA']] },
+      { id: '3', sex: 'M', affected: true, generation: 1, position: 0, requiredAnswers: [['aa']], parents: ['1', '2'] },
+      { id: '4', sex: 'F', affected: false, generation: 1, position: 1, requiredAnswers: [['AA'], ['Aa', 'aA']], parents: ['1', '2'] },
     ]
   },
   {
@@ -50,12 +50,12 @@ const SCENARIOS: Scenario[] = [
     level: 2,
     title: 'Level 2: 상염색체 우성 유전 (보조개)',
     description: '부모는 모두 보조개가 있는데(우성), 자녀 중 한 명은 보조개가 없습니다. 가족 구성원의 유전자형을 찾아보세요.',
-    hint: '보조개가 있는 경우 A, 없는 경우 a로 표시합니다. 보조개가 없는 자녀(aa)가 나오려면 부모는 모두 잡종(Aa)이어야 합니다.',
+    hint: '보조개가 있는 경우 A, 없는 경우 a로 표시합니다. 보조개가 없는 자녀(aa)가 나오려면 부모는 모두 잡종(Aa)이어야 합니다. (여러 개가 답인 경우 콤마(,)로 구분해 모두 쓰세요)',
     nodes: [
-      { id: '1', sex: 'M', affected: true, generation: 0, position: 0, correctAnswers: ['Aa', 'aA'] },
-      { id: '2', sex: 'F', affected: true, generation: 0, position: 1, correctAnswers: ['Aa', 'aA'] },
-      { id: '3', sex: 'M', affected: false, generation: 1, position: 0, correctAnswers: ['aa'], parents: ['1', '2'] },
-      { id: '4', sex: 'F', affected: true, generation: 1, position: 1, correctAnswers: ['AA', 'Aa', 'aA'], parents: ['1', '2'] },
+      { id: '1', sex: 'M', affected: true, generation: 0, position: 0, requiredAnswers: [['Aa', 'aA']] },
+      { id: '2', sex: 'F', affected: true, generation: 0, position: 1, requiredAnswers: [['Aa', 'aA']] },
+      { id: '3', sex: 'M', affected: false, generation: 1, position: 0, requiredAnswers: [['aa']], parents: ['1', '2'] },
+      { id: '4', sex: 'F', affected: true, generation: 1, position: 1, requiredAnswers: [['AA'], ['Aa', 'aA']], parents: ['1', '2'] },
     ]
   },
   {
@@ -63,12 +63,12 @@ const SCENARIOS: Scenario[] = [
     level: 3,
     title: 'Level 3: 반성 열성 유전 (적록 색맹)',
     description: '아버지는 정상, 어머니는 정상(보인자)입니다. 아들 중 한 명은 색맹이고 딸은 모두 정상입니다.',
-    hint: "성염색체 유전이므로 남자는 XY, 여자는 XX를 기본으로 합니다. 색맹 유전자는 X'로 표시해 보세요. (예: X'Y, XX')",
+    hint: "성염색체 유전이므로 남자는 XY, 여자는 XX를 기본으로 합니다. 색맹 유전자는 X'로 표시해 보세요. (가능한 답이 여러 개면 모두 적어야 정답입니다)",
     nodes: [
-      { id: '1', sex: 'M', affected: false, generation: 0, position: 0, correctAnswers: ['XY'] },
-      { id: '2', sex: 'F', affected: false, generation: 0, position: 1, correctAnswers: ['XX\'', 'X\'X'] },
-      { id: '3', sex: 'M', affected: true, generation: 1, position: 0, correctAnswers: ['X\'Y'], parents: ['1', '2'] },
-      { id: '4', sex: 'F', affected: false, generation: 1, position: 1, correctAnswers: ['XX', 'XX\'', 'X\'X'], parents: ['1', '2'] },
+      { id: '1', sex: 'M', affected: false, generation: 0, position: 0, requiredAnswers: [['XY']] },
+      { id: '2', sex: 'F', affected: false, generation: 0, position: 1, requiredAnswers: [['XX\'', 'X\'X']] },
+      { id: '3', sex: 'M', affected: true, generation: 1, position: 0, requiredAnswers: [["X'Y"]], parents: ['1', '2'] },
+      { id: '4', sex: 'F', affected: false, generation: 1, position: 1, requiredAnswers: [['XX'], ['XX\'', 'X\'X']], parents: ['1', '2'] },
     ]
   },
   {
@@ -78,12 +78,12 @@ const SCENARIOS: Scenario[] = [
     description: '아버지는 A형, 어머니는 B형인데 자녀들에게서 A, B, AB, O형이 모두 태어났습니다. 부모의 유전자형은 무엇일까요?',
     hint: 'O형 자녀(OO)가 태어나려면 부모가 각각 O 유전자를 하나씩 가지고 있어야 합니다.',
     nodes: [
-      { id: '1', sex: 'M', affected: false, phenotypeLabel: 'A', generation: 0, position: 0, correctAnswers: ['AO', 'OA'] },
-      { id: '2', sex: 'F', affected: false, phenotypeLabel: 'B', generation: 0, position: 1, correctAnswers: ['BO', 'OB'] },
-      { id: '3', sex: 'M', affected: false, phenotypeLabel: 'AB', generation: 1, position: 0, correctAnswers: ['AB', 'BA'], parents: ['1', '2'] },
-      { id: '4', sex: 'F', affected: false, phenotypeLabel: 'O', generation: 1, position: 1, correctAnswers: ['OO'], parents: ['1', '2'] },
-      { id: '5', sex: 'M', affected: false, phenotypeLabel: 'A', generation: 1, position: 2, correctAnswers: ['AO', 'OA'], parents: ['1', '2'] },
-      { id: '6', sex: 'F', affected: false, phenotypeLabel: 'B', generation: 1, position: 3, correctAnswers: ['BO', 'OB'], parents: ['1', '2'] },
+      { id: '1', sex: 'M', affected: false, phenotypeLabel: 'A', generation: 0, position: 0, requiredAnswers: [['AO', 'OA']] },
+      { id: '2', sex: 'F', affected: false, phenotypeLabel: 'B', generation: 0, position: 1, requiredAnswers: [['BO', 'OB']] },
+      { id: '3', sex: 'M', affected: false, phenotypeLabel: 'AB', generation: 1, position: 0, requiredAnswers: [['AB', 'BA']], parents: ['1', '2'] },
+      { id: '4', sex: 'F', affected: false, phenotypeLabel: 'O', generation: 1, position: 1, requiredAnswers: [['OO']], parents: ['1', '2'] },
+      { id: '5', sex: 'M', affected: false, phenotypeLabel: 'A', generation: 1, position: 2, requiredAnswers: [['AO', 'OA']], parents: ['1', '2'] },
+      { id: '6', sex: 'F', affected: false, phenotypeLabel: 'B', generation: 1, position: 3, requiredAnswers: [['BO', 'OB']], parents: ['1', '2'] },
     ]
   }
 ];
@@ -94,19 +94,28 @@ const normalizeGenotype = (input: string) => {
   return input.trim().replace(/ /g, '').toLowerCase();
 };
 
-const checkAnswer = (input: string, correctAnswers: string[]) => {
-  const normInput = normalizeGenotype(input);
+const checkAnswer = (input: string, requiredGroups: string[][]) => {
+  // Split user input by common separators: comma, slash, space
+  const studentParts = input.split(/[,/ ]+/).filter(p => p.trim() !== '').map(normalizeGenotype);
   
-  // For each correct answer, we check if it matches the normalized input
-  // We also handle cases like AO/OA by sorting alphabet if it's blood type? 
-  // No, the data already includes permutations in correctAnswers list for simplicity.
-  // But let's be more robust:
-  return correctAnswers.some(ans => {
-    const normAns = normalizeGenotype(ans);
-    // If it's blood type (contains A, B, O), we could sort, 
-    // but the provided scenarios already have AO/OA etc.
-    return normInput === normAns;
+  if (studentParts.length === 0) return false;
+
+  // Check if every required group has at least one representative in studentParts
+  const groupsCovered = requiredGroups.every(group => {
+    return group.some(variant => {
+      const normVariant = normalizeGenotype(variant);
+      return studentParts.includes(normVariant);
+    });
   });
+
+  // Ensure student didn't provide fewer answers than required distinct genotypes
+  // And also ensure they didn't provide extra invalid ones? 
+  // For pedagogical reasons, let's strictly require the count of unique required genotypes to match.
+  const allPartsValid = studentParts.every(part => {
+    return requiredGroups.some(group => group.some(v => normalizeGenotype(v) === part));
+  });
+
+  return groupsCovered && allPartsValid && studentParts.length === requiredGroups.length;
 };
 
 // --- Components ---
@@ -137,7 +146,7 @@ export default function App() {
     let allCorrect = true;
 
     scenario.nodes.forEach(node => {
-      const isCorrect = checkAnswer(inputs[node.id] || '', node.correctAnswers);
+      const isCorrect = checkAnswer(inputs[node.id] || '', node.requiredAnswers);
       newResults[node.id] = isCorrect;
       if (!isCorrect) allCorrect = false;
     });
